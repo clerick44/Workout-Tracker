@@ -2,6 +2,7 @@ const db = require("../../models");
 const router = require("express").Router();
 
 router.get("/api/workouts", (req, res) => {
+  console.log("banged on the get route!!!!!!!!!!!!!")
   db.Workout.aggregate([
     {
       $addFields: {
