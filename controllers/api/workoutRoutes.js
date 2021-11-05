@@ -1,8 +1,8 @@
-const db = require("../../models");
 const router = require("express").Router();
+const db = require("../../models");
 
 router.get("/api/workouts", (req, res) => {
-  console.log("banged on the get route!!!!!!!!!!!!!")
+  console.log("banged on the get route!!!!!!!!!!!!!");
   db.Workout.aggregate([
     {
       $addFields: {
