@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const db = require("../../models");
 
-router.get("/api/workouts", (req, res) => {
+router.get("/", (req, res) => {
   console.log("banged on the get route!!!!!!!!!!!!!");
   db.Workout.aggregate([
     {
@@ -20,7 +20,7 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-router.get("/api/workouts/range", (req, res) => {
+router.get("/range", (req, res) => {
   db.Workout.aggregate([
     {
       $addFields: {
@@ -38,7 +38,7 @@ router.get("/api/workouts/range", (req, res) => {
     });
 });
 
-router.post("/api/workouts", (req, res) => {
+router.post("/", (req, res) => {
   db.Workout.create({})
     .then((data) => res.json(data))
     .catch((err) => {
@@ -47,7 +47,7 @@ router.post("/api/workouts", (req, res) => {
     });
 });
 
-router.put("/api/workouts/:id", ({ body, params }, res) => {
+router.put("/:id", ({ body, params }, res) => {
   db.Workout.findByIdAndUpdate(
     params.id,
     { $push: { exercises: body } },
